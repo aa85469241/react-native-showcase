@@ -55,10 +55,11 @@ const Mobile = () => {
                                 )
                                 .map((_screen, i) => (
                                     <Image
-                                        priority={true}
                                         key={"screen-" + i}
                                         src={_screen.src}
                                         alt={_screen.screenName}
+                                        placeholder="blur"
+                                        blurDataURL="./images/screen-home.png"
                                         className="h-full"
                                     />
                                 ))}
