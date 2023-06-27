@@ -1,0 +1,20 @@
+// 1 = 10px
+
+shadow: {
+    width: 400,
+}
+
+box: {
+    width: 336,
+    height: 160,
+}
+
+lid: {
+    width: 376,
+    height: 40,
+}
+
+tape: {
+    width: 40,
+    height: 64,
+}

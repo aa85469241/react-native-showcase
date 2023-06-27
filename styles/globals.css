@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --clr-bg: #eee5d2;
+    --clr-primary: #0f2d4e;
+    --clr-secondary: #faf7f0;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    user-select: none;
+    color: var(--clr-primary);
+    border-color: var(--clr-primary);
+    overflow-x: hidden;
+}
