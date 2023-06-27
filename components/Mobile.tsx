@@ -4,71 +4,23 @@ import { useEffect } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {
-    HomeScreen,
-    HomeToPython,
-    HomeToWeb,
-    LandingScreen,
-    MockupBack,
-    MockupFront,
-} from "@/public";
-import { styles } from "@/styles/style";
+import { LandingScreen, MockupBack, MockupFront } from "@/public";
 import { usePanelController } from "@/context/PanelControllerContext";
+import { screens } from "@/utils/screenData";
 
-type MarkerProps = {
-    outlineClass?: string;
-    serialNumberDiameter: number;
-    serialNumber: string;
-    serialNumberClass?: string;
-};
-
-type MobileProps = {
-    screenClassName?: string;
-    children?: React.ReactNode;
-};
-
-const Marker = ({
-    outlineClass,
-    serialNumberDiameter,
-    serialNumber,
-    serialNumberClass,
-}: MarkerProps) => {
-    return (
-        <div
-            className={`absolute border-4 border-skin-primary ${outlineClass}`}
-        >
-            <div className="relative w-full h-full">
-                <div
-                    className={`absolute
-                    w-[${serialNumberDiameter}px] 
-                    h-[${serialNumberDiameter}px] 
-                    bg-[--clr-primary] rounded-[50%] p-2 ${styles.flexCenter}`}
-                    style={{
-                        top: `-${serialNumberDiameter / 2}px`,
-                        right: `-${serialNumberDiameter / 2}px`,
-                    }}
-                >
-                    <div
-                        className={`text-skin-background ${serialNumberClass}`}
-                    >
-                        {serialNumber}
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const Mobile = ({ screenClassName, children }: MobileProps) => {
+const Mobile = () => {
     const { state } = usePanelController();
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
-        if (state.isEnter) {
-            gsap.to("#screen-scroller", { xPercent: -100 });
-        }
-    });
+        const screenTransition = gsap
+            .timeline({ paused: true })
+            .to("#screen-wrapper", { opacity: 0, duration: 0.5 })
+            .to("#screen-wrapper", { opacity: 1, duration: 0.5 });
+
+        if (state.selectedPage) screenTransition.play();
+    }, [state.selectedPage]);
 
     return (
         <div
@@ -91,31 +43,37 @@ const Mobile = ({ screenClassName, children }: MobileProps) => {
                 />
                 <div
                     id="mobile-screen"
-                    className={`absolute top-[2.5%] left-[5%] w-[90%] h-[95%] rounded-[40px] overflow-hidden z-10 ${screenClassName}`}
+                    className="absolute top-[2.5%] left-[5%] w-[90%] h-[95%] bg-black rounded-[40px] overflow-hidden z-10"
                 >
-                    <div id="screen-scroller" className="w-full h-full flex">
-                        <Image
-                            src={LandingScreen}
-                            alt="landing-page"
-                            className="h-full"
-                        />
-                        {state.selectedPage ? (
+                    <div
+                        id="screen-scroller"
+                        className={`w-[200%] h-full flex ${
+                            state.isEnter && "-translate-x-1/2"
+                        } duration-500`}
+                    >
+                        <div className="w-full">
                             <Image
-                                src={
-                                    state.selectedPage === "python"
-                                        ? HomeToPython
-                                        : HomeToWeb
-                                }
-                                alt={`${state.selectedPage} + -page`}
+                                src={LandingScreen}
+                                alt="landing-page"
                                 className="h-full"
                             />
-                        ) : (
-                            <Image
-                                src={HomeScreen}
-                                alt="home-page"
-                                className="h-full"
-                            />
-                        )}
+                        </div>
+                        <div id="screen-wrapper" className="w-full">
+                            {screens
+                                .filter(
+                                    (screen) =>
+                                        screen.screenName === state.selectedPage
+                                )
+                                .map((_screen, i) => (
+                                    <Image
+                                        priority={true}
+                                        key={"screen-" + i}
+                                        src={_screen.src}
+                                        alt={_screen.screenName}
+                                        className="h-full"
+                                    />
+                                ))}
+                        </div>
                     </div>
                     <div
                         id="screen-blanked"
@@ -123,7 +81,6 @@ const Mobile = ({ screenClassName, children }: MobileProps) => {
                             state.power ? "opacity-0" : "opacity-100"
                         } bg-black duration-500`}
                     ></div>
-                    {children}
                 </div>
             </div>
             {/* mobile back side */}

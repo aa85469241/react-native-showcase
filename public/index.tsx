@@ -5,8 +5,7 @@ import BoxLid from "./box_lid.png";
 import BoxTape_1 from "./box_tape_1.png";
 import BoxTape_2 from "./box_tape_2.png";
 import SvgBox from "./svg_box.svg";
-import Wrinkled_backdrop from "./wrinkled-paper.png";
-import SandPaper_backdrop from "./sand-paper.jpg";
+import SandPaper_backdrop from "./sand-paper.png";
 import PowerOutageSign from "./power_outage_sign.png";
 
 // mobile screen
@@ -23,7 +22,6 @@ export {
     BoxTape_1,
     BoxTape_2,
     SvgBox,
-    Wrinkled_backdrop,
     SandPaper_backdrop,
     PowerOutageSign,
     LandingScreen,

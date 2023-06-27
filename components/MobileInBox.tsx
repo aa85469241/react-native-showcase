@@ -144,7 +144,7 @@ const MobileInBox = () => {
                     <div className="relative">
                         <Delivery_box />
                         <div className="mobile-wrapper w-full h-full absolute inset-0 flex items-center justify-center">
-                            <Mobile screenClassName="bg-white"></Mobile>
+                            <Mobile />
                         </div>
                     </div>
                 </motion.div>

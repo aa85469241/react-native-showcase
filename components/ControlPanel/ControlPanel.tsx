@@ -97,7 +97,7 @@ const ControlPanel = () => {
 
         if (state.power) step1.play();
         if (state.isEnter) step2.play();
-        if (state.selectedPage) step3.play();
+        if (state.selectedPage && state.selectedPage !== "home") step3.play();
     }, [width, height, state.power, state.isEnter, state.selectedPage]);
 
     return (

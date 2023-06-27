@@ -6,7 +6,7 @@ import { ControlActionProps, reducer } from "./PanelControllerReducer";
 const initialState = {
     power: false,
     isEnter: false,
-    selectedPage: "",
+    selectedPage: "home",
 };
 
 export const PanelControllerContext = createContext<{

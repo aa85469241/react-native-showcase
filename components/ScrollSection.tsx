@@ -33,7 +33,7 @@ const Container = ({
     return (
         <div
             id={id}
-            className={`relative h-screen w-full pt-[60px] ${containerClass}`}
+            className={`relative h-screen w-full pt-[60px] overflow-hidden ${containerClass}`}
         >
             <section className={`h-full ${wrapperClass}`}>{children}</section>
         </div>
@@ -158,7 +158,7 @@ const ScrollSection = () => {
                 >
                     <section
                         id="heading"
-                        className="w-max px-6 py-3 border-2 border-skin-primary rounded-full text-center"
+                        className="w-max p-2 md:px-6 md:py-3 border-2 border-skin-primary rounded-full text-center"
                     >
                         <h1 className={`${styles.headingText}`}>
                             Showcase website
