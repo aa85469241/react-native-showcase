@@ -1,5 +1,6 @@
-import Background from "@/components/Background";
 import "@/styles/globals.css";
+import Head from "next/head";
+import Background from "@/components/Background";
 import { Righteous } from "next/font/google";
 
 const righteous = Righteous({
@@ -19,7 +20,14 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <head></head>
+            <Head>
+                <title>React Native Showcase</title>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <body
                 className={`${righteous.className} scrollbar-thin scrollbar-thumb-slate-700/80 hover:scrollbar-thumb-slate-700 scrollbar-track-slate-300/80`}
             >
