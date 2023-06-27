@@ -11,8 +11,8 @@ import PowerOutageSign from "./power_outage_sign.png";
 // mobile screen
 import LandingScreen from "./Screen-landing.png";
 import HomeScreen from "./Screen-home.png";
-import HomeToPython from "./Screen-to-python.gif";
-import HomeToWeb from "./Screen-to-web.gif";
+import Python from "./Screen-python.png";
+import Web from "./Screen-web.png";
 
 export {
     MockupFront,
@@ -26,6 +26,6 @@ export {
     PowerOutageSign,
     LandingScreen,
     HomeScreen,
-    HomeToPython,
-    HomeToWeb,
+    Python,
+    Web,
 };

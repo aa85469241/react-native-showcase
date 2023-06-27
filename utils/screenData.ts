@@ -1,9 +1,9 @@
-import { HomeScreen, HomeToPython, HomeToWeb, LandingScreen } from "@/public";
+import { HomeScreen, Python, Web } from "@/public";
 
 export const screens = [
     { id: 1, src: HomeScreen, screenName: "home" },
-    { id: 2, src: HomeToPython, screenName: "python" },
-    { id: 3, src: HomeToWeb, screenName: "website" },
+    { id: 2, src: Python, screenName: "python" },
+    { id: 3, src: Web, screenName: "website" },
 ];
 
 export const quests = [

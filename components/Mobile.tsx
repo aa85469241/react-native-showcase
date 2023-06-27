@@ -11,17 +11,6 @@ import { screens } from "@/utils/screenData";
 const Mobile = () => {
     const { state } = usePanelController();
 
-    useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-
-        const screenTransition = gsap
-            .timeline({ paused: true })
-            .to("#screen-wrapper", { opacity: 0, duration: 0.5 })
-            .to("#screen-wrapper", { opacity: 1, duration: 0.5 });
-
-        if (state.selectedPage) screenTransition.play();
-    }, [state.selectedPage]);
-
     return (
         <div
             id="mobile"
