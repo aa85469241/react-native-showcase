@@ -92,7 +92,11 @@ const ControlPanel = () => {
                 { xPercent: -300, rotate: -1080 },
                 { xPercent: 0, rotate: 0 }
             )
-            .fromTo("#expo-icon-text", { xPercent: 300 }, { xPercent: 0 });
+            .fromTo("#expo-icon-text", { xPercent: 300 }, { xPercent: 0 })
+            .to("#vertical-line-path-2", {
+                strokeDashoffset: 0,
+                duration: 1,
+            });
 
         if (state.power) step1.play();
         if (state.isEnter) step2.play();
