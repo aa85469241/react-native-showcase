@@ -1,3 +1,5 @@
+import LandingPage from './LandingPage';
+import Background from './Background'
 import Navbar from "./Navbar";
 import ScrollSection from "./ScrollSection";
 import Footer from "./Footer"
@@ -8,6 +10,8 @@ import AnimateText from "./AnimateText";
 import ControlPanel from "./ControlPanel/ControlPanel";
 
 export {
+    LandingPage,
+    Background,
     Navbar,
     ScrollSection,
     Footer,

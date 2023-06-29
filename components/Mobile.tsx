@@ -44,7 +44,7 @@ const Mobile = () => {
                             <Image
                                 src={LandingScreen}
                                 alt="landing-page"
-                                className="h-full"
+                                className="w-full h-full"
                             />
                         </div>
                         <div id="screen-wrapper" className="w-full">
@@ -58,9 +58,7 @@ const Mobile = () => {
                                         key={"screen-" + i}
                                         src={_screen.src}
                                         alt={_screen.screenName}
-                                        placeholder="blur"
-                                        blurDataURL="./images/screen-home.png"
-                                        className="h-full"
+                                        className="w-full h-full"
                                     />
                                 ))}
                         </div>

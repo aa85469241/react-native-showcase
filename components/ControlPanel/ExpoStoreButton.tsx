@@ -15,19 +15,18 @@ export const ExpoStoreButton = ({
         <PanelButton id={id} serialNumber={4} className={className}>
             <Link
                 href="https://expo.dev/@defgh/react-native-typescript?serviceType=classic&distribution=expo-go"
-                className={`relative w-full h-full ${styles.flexCenter} overflow-hidden`}
+                className="absolute w-full h-full rounded-full"
+            />
+            <div
+                className={`${styles.flexCenter} relative w-full h-full overflow-hidden`}
             >
-                <SiExpo
-                    id="expo-icon"
-                    className={`${styles.headingText} -rotate-[1080deg] -translate-x-[300%]`}
-                />
-                <span
-                    id="expo-icon-text"
-                    className={`${styles.titleText} translate-x-[300%]`}
-                >
+                <span>
+                    <SiExpo id="expo-icon" className={`${styles.titleText}`} />
+                </span>
+                <span id="expo-icon-text" className={`${styles.titleText}`}>
                     expo
                 </span>
-            </Link>
+            </div>
         </PanelButton>
     );
 };

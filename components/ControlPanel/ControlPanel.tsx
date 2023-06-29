@@ -87,13 +87,12 @@ const ControlPanel = () => {
                 "start"
             )
             .to("#expo-store-button", { scale: 1, duration: 0.5 })
-            .to(
+            .fromTo(
                 "#expo-icon",
-                { rotate: 1080, xPercent: 300, duration: 1 },
-                "expo-icon"
+                { xPercent: -300, rotate: -1080 },
+                { xPercent: 0, rotate: 0 }
             )
-            .to("#expo-icon-text", { xPercent: -300, duration: 1 }, "expo-icon")
-            .to("#vertical-line-path-2", { strokeDashoffset: 0, duration: 1 });
+            .fromTo("#expo-icon-text", { xPercent: 300 }, { xPercent: 0 });
 
         if (state.power) step1.play();
         if (state.isEnter) step2.play();

@@ -1,7 +1,13 @@
+"use client";
+
 import { SandPaper_backdrop } from "@/public";
 import Image from "next/image";
 
-const Background = () => {
+const Background = ({
+    setIsLoading,
+}: {
+    setIsLoading: React.Dispatch<boolean>;
+}) => {
     return (
         <div className="fixed inset-0 bg-[--clr-bg] -z-10">
             <Image
