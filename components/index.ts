@@ -1,4 +1,4 @@
-import LandingPage from './LandingPage';
+import PreLoader from './PreLoader';
 import Background from './Background'
 import Navbar from "./Navbar";
 import ScrollSection from "./ScrollSection";
@@ -10,7 +10,7 @@ import AnimateText from "./AnimateText";
 import ControlPanel from "./ControlPanel/ControlPanel";
 
 export {
-    LandingPage,
+    PreLoader,
     Background,
     Navbar,
     ScrollSection,

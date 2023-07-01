@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ControlPanel, MobileInBox } from "@/components";
 import { styles } from "@/styles/style";
+import { PanelControllerProvider } from "@/context/PanelControllerContext";
 
 type ContainerProps = {
     id?: string;
@@ -148,105 +149,109 @@ const ScrollSection = () => {
     });
 
     return (
-        <div ref={ref}>
-            <MobileInBox />
-            <div>
-                <Container
-                    id="section-1"
-                    wrapperClass={`p-3 md:p-6 relative ${styles.flexColumns}`}
-                >
-                    <section
-                        id="heading"
-                        className="w-max p-2 md:px-6 md:py-3 border-2 border-skin-primary rounded-full text-center"
+        <PanelControllerProvider>
+            <div ref={ref}>
+                <MobileInBox />
+                <div>
+                    <Container
+                        id="section-1"
+                        wrapperClass={`p-3 md:p-6 relative ${styles.flexColumns}`}
                     >
-                        <h1 className={`${styles.headingText}`}>
-                            Showcase website
-                        </h1>
-                        <p className={`${styles.descriptionText}`}>
-                            Made for the purpose of presenting my React Native
-                            App.
-                        </p>
-                    </section>
-                    <span
-                        id="holder-inner"
-                        className={`${
-                            styles.absoluteCenter
-                        } ${styles.ringCircle("w-[50%] md:w-1/4")} `}
-                    />
-                    <span
-                        id="holder-middle"
-                        className={`${
-                            styles.absoluteCenter
-                        } ${styles.ringCircle("w-[90%] md:w-1/2")} `}
-                    />
-                    <span
-                        id="holder-outer"
-                        className={`${
-                            styles.absoluteCenter
-                        } ${styles.ringCircle("w-[130%] md:w-3/4")}`}
-                    />
-                    <div
-                        className={`absolute top-0 left-0 w-1/2 h-full ${styles.flexColumns} justify-center`}
-                    >
-                        <Holder>
-                            <ModalSection id="modal-order-2">
-                                <h2
-                                    className={`${styles.titleText} px-2 mb-2 rounded-lg bg-[--clr-primary] text-skin-background`}
-                                >
-                                    composition
-                                </h2>
-                                <p
-                                    className={`${styles.descriptionText} leading-6 text-justify`}
-                                >
-                                    The website app is built using the React
-                                    Native framework, and incorporating the
-                                    animation effects achieved through the
-                                    utilization of two packages: reanimated and
-                                    gesture.
-                                </p>
-                            </ModalSection>
-                        </Holder>
-                    </div>
-                    <div className="absolute top-0 right-0 w-1/2 h-full">
-                        <Holder className="h-1/2">
-                            <ModalSection id="modal-order-1">
-                                <h2
-                                    className={`${styles.titleText} inline px-2 mb-2 rounded-lg bg-[--clr-primary] text-skin-background`}
-                                >
-                                    mobility
-                                </h2>
-                                <p
-                                    className={`${styles.descriptionText} leading-6 text-justify`}
-                                >
-                                    It is flexible app allows users to open it
-                                    on their mobile devices whenever they want.
-                                    (Android device is more suggested.)
-                                </p>
-                            </ModalSection>
-                        </Holder>
-                        <Holder className="h-1/2">
-                            <ModalSection id="modal-order-3">
-                                <h2
-                                    className={`${styles.titleText} px-2 mb-2 rounded-lg bg-[--clr-primary] text-skin-background`}
-                                >
-                                    overview
-                                </h2>
-                                <p
-                                    className={`${styles.descriptionText} leading-6 text-justify`}
-                                >
-                                    My React Native portfolio website offers an
-                                    immersive experience to discover my skills,
-                                    projects, and my programming journey.
-                                </p>
-                            </ModalSection>
-                        </Holder>
-                    </div>
+                        <section
+                            id="heading"
+                            className="w-max p-2 md:px-6 md:py-3 border-2 border-skin-primary rounded-full text-center"
+                        >
+                            <h1 className={`${styles.headingText}`}>
+                                Showcase website
+                            </h1>
+                            <p className={`${styles.descriptionText}`}>
+                                Made for the purpose of presenting my React
+                                Native App.
+                            </p>
+                        </section>
+                        <span
+                            id="holder-inner"
+                            className={`${
+                                styles.absoluteCenter
+                            } ${styles.ringCircle("w-[50%] md:w-1/4")} `}
+                        />
+                        <span
+                            id="holder-middle"
+                            className={`${
+                                styles.absoluteCenter
+                            } ${styles.ringCircle("w-[90%] md:w-1/2")} `}
+                        />
+                        <span
+                            id="holder-outer"
+                            className={`${
+                                styles.absoluteCenter
+                            } ${styles.ringCircle("w-[130%] md:w-3/4")}`}
+                        />
+                        <div
+                            className={`absolute top-0 left-0 w-1/2 h-full ${styles.flexColumns} justify-center`}
+                        >
+                            <Holder>
+                                <ModalSection id="modal-order-2">
+                                    <h2
+                                        className={`${styles.titleText} px-2 mb-2 rounded-lg bg-[--clr-primary] text-skin-background`}
+                                    >
+                                        composition
+                                    </h2>
+                                    <p
+                                        className={`${styles.descriptionText} leading-6 text-justify`}
+                                    >
+                                        The website app is built using the React
+                                        Native framework, and incorporating the
+                                        animation effects achieved through the
+                                        utilization of two packages: reanimated
+                                        and gesture.
+                                    </p>
+                                </ModalSection>
+                            </Holder>
+                        </div>
+                        <div className="absolute top-0 right-0 w-1/2 h-full">
+                            <Holder className="h-1/2">
+                                <ModalSection id="modal-order-1">
+                                    <h2
+                                        className={`${styles.titleText} inline px-2 mb-2 rounded-lg bg-[--clr-primary] text-skin-background`}
+                                    >
+                                        mobility
+                                    </h2>
+                                    <p
+                                        className={`${styles.descriptionText} leading-6 text-justify`}
+                                    >
+                                        It is flexible app allows users to open
+                                        it on their mobile devices whenever they
+                                        want. (Android device is more
+                                        suggested.)
+                                    </p>
+                                </ModalSection>
+                            </Holder>
+                            <Holder className="h-1/2">
+                                <ModalSection id="modal-order-3">
+                                    <h2
+                                        className={`${styles.titleText} px-2 mb-2 rounded-lg bg-[--clr-primary] text-skin-background`}
+                                    >
+                                        overview
+                                    </h2>
+                                    <p
+                                        className={`${styles.descriptionText} leading-6 text-justify`}
+                                    >
+                                        My React Native portfolio website offers
+                                        an immersive experience to discover my
+                                        skills, projects, and my programming
+                                        journey.
+                                    </p>
+                                </ModalSection>
+                            </Holder>
+                        </div>
+                    </Container>
+                </div>
+                <Container id="footer" wrapperClass="relative">
+                    <ControlPanel />
                 </Container>
             </div>
-            <Container id="footer" wrapperClass="relative">
-                <ControlPanel />
-            </Container>
-        </div>
+        </PanelControllerProvider>
     );
 };
 

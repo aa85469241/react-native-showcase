@@ -4,7 +4,7 @@ const FadeInDown = {
     hidden: { y: "100%" },
     visible: (transitionParams: Transition) => ({
         y: "0%",
-        transition: { delay: 1, ...transitionParams }
+        transition: { ...transitionParams }
     })
 }
 
@@ -12,7 +12,7 @@ const Appearing = {
     hidden: { opacity: 0 },
     visible: (transitionParams: Transition) => ({
         opacity: 1,
-        transition: { delay: 1, ...transitionParams }
+        transition: { ...transitionParams }
     })
 }
 
