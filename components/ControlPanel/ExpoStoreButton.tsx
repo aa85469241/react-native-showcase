@@ -18,7 +18,7 @@ export const ExpoStoreButton = ({
                 className="absolute w-full h-full rounded-full"
             />
             <div
-                className={`${styles.flexCenter} relative w-full h-full overflow-hidden`}
+                className={`${styles.flexCenter} relative w-full h-full overflow-hidden pointer-events-none`}
             >
                 <span>
                     <SiExpo id="expo-icon" className={`${styles.titleText}`} />

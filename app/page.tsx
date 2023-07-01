@@ -1,31 +1,33 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ScrollSection, Navbar, Background, LandingPage } from "@/components";
 import { PanelControllerProvider } from "@/context/PanelControllerContext";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Home() {
-    const [isLoading, setIsLoading] = useState<boolean>(true);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 5000);
-    });
+    const [loading, setLoading] = useState(true);
 
     return (
-        <main className="main max-h-screen h-screen max-w-screen">
-            {isLoading ? (
-                <LandingPage />
+        <AnimatePresence>
+            {loading ? (
+                <LandingPage setLoading={setLoading} />
             ) : (
-                <>
-                    <Background />
+                <motion.main
+                    className="main max-h-screen h-screen max-w-screen"
+                    initial={{ opacity: 0 }}
+                    animate={{
+                        opacity: 1,
+                        transition: { duration: 5 },
+                    }}
+                    exit={{ opacity: 0 }}
+                >
                     <Navbar />
                     <PanelControllerProvider>
                         <ScrollSection />
                     </PanelControllerProvider>
-                </>
+                </motion.main>
             )}
-        </main>
+        </AnimatePresence>
     );
 }

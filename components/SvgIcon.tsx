@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const pathVariants = {
     hidden: { pathLength: 0 },
-    visible: { pathLength: 1, transition: { duration: 5 } },
+    visible: { pathLength: 1, transition: { delay: 1, duration: 5 } },
 };
 
 const SvgIcon = () => {

@@ -111,8 +111,6 @@ const MobileInBox = () => {
         <motion.div
             ref={ref}
             className="sticky inset-0 max-h-screen h-screen w-full pt-[60px] overflow-hidden"
-            initial="hidden"
-            whileInView="visible"
         >
             <div
                 className={`h-full ${styles.flexColumns} items-center justify-around`}

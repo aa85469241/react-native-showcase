@@ -24,8 +24,6 @@ const AnimateText: FC<AnimateTextProps> = ({
                 <motion.span
                     key={`letter-${i}`}
                     className={`overflow-hidden ${wrapperClassName}`}
-                    initial="hidden"
-                    whileInView="visible"
                 >
                     <motion.span
                         id={`letter-${i}`}

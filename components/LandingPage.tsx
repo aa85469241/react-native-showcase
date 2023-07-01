@@ -2,11 +2,11 @@
 
 import React, { useEffect } from "react";
 import { styles } from "@/styles/style";
-import { gsap } from "gsap";
+import gsap from "gsap";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import { motion } from "framer-motion";
 
-const LandingPage = () => {
+const LandingPage = ({ setLoading }: { setLoading: any }) => {
     useEffect(() => {
         gsap.registerPlugin(MotionPathPlugin);
 
@@ -25,10 +25,11 @@ const LandingPage = () => {
 
     return (
         <motion.div
+            id="landing-page"
             className={`fixed inset-0 ${styles.flexColumns} justify-center items-center bg-[--clr-bg] z-30`}
-            exit={{ y: "100%", transition: { duration: 0.5 } }}
+            exit={{ opacity: 0, transition: { duration: 2 } }}
         >
-            <div className="w-[40%] md:w-[30%] lg:w-[20%] h-auto pb-6">
+            <div className="w-[60%] md:w-[40%] lg:w-[20%] h-auto pb-6">
                 <svg
                     viewBox="-100 -405 400 400"
                     fill="none"
@@ -36,7 +37,7 @@ const LandingPage = () => {
                     // stroke="#000000"
                     // strokeWidth={1}
                 >
-                    <path id="path" d="M0,0 L200,0 C180,-360 20,-360 0,0" />
+                    <path id="path" d="M0,0 L200,0 C180,-180 20,-180 0,0" />
                     <g id="landing-box" className="scale-[0.15]">
                         <path
                             d="M925.6 869.6H98.4c-22.4 0-40-17.6-40-40V296c0-22.4 17.6-40 40-40h826.4c22.4 0 40 17.6 40 40v533.6c0.8 21.6-17.6 40-39.2 40z"
@@ -68,8 +69,17 @@ const LandingPage = () => {
                         ></path>
                     </g>
                 </svg>
-                <div className="w-full h-[5px] bg-[--clr-secondary] rounded-[50%]"></div>
+                <div
+                    id="ground"
+                    className="w-full h-[5px] bg-[--clr-secondary] rounded-[50%]"
+                ></div>
             </div>
+            <button
+                className={`${styles.titleText}`}
+                onClick={() => setLoading(false)}
+            >
+                Enter
+            </button>
         </motion.div>
     );
 };

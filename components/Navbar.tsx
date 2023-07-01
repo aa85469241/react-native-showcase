@@ -14,16 +14,12 @@ const Navbar = () => {
     };
 
     return (
-        <motion.nav
-            className="w-full h-[60px] fixed top-0 flex justify-center z-10"
-            initial="hidden"
-            whileInView="visible"
-        >
+        <motion.nav className="w-full h-[60px] fixed top-0 flex justify-center z-10">
             <div className="w-full py-[15px] ps-2 md:ps-4 lg:ps-6">
                 <motion.div
                     className="h-[30px] border-t-2 border-b-2 border-[--clr-primary] origin-left"
                     variants={framerAnimation.stretchX}
-                    transition={{ duration: 1 }}
+                    transition={{ duration: 1, delay: 1 }}
                 ></motion.div>
             </div>
             <motion.div
@@ -45,7 +41,7 @@ const Navbar = () => {
                 <motion.div
                     className="h-[30px] border-t-2 border-b-2 border-[--clr-primary] origin-right"
                     variants={framerAnimation.stretchX}
-                    transition={{ duration: 1 }}
+                    transition={{ duration: 1, delay: 1 }}
                 ></motion.div>
             </div>
         </motion.nav>

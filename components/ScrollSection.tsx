@@ -61,7 +61,6 @@ const ModalSection = ({ id, className, children }: ModalSectionProps) => {
 
 const ScrollSection = () => {
     const ref = useRef<HTMLDivElement>(null);
-    const scrollerRef = useRef<HTMLDivElement>(null);
     const mm = gsap.matchMedia();
 
     useEffect(() => {
@@ -151,7 +150,7 @@ const ScrollSection = () => {
     return (
         <div ref={ref}>
             <MobileInBox />
-            <div ref={scrollerRef}>
+            <div>
                 <Container
                     id="section-1"
                     wrapperClass={`p-3 md:p-6 relative ${styles.flexColumns}`}
