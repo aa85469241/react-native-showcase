@@ -6,24 +6,25 @@ import gsap from "gsap";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import { motion } from "framer-motion";
 import { framerAnimation } from "@/utils/framerVariants";
-import AnimateText from "./AnimateText";
+import { useLoadingState } from "@/context/loadingStateContext";
 
 const PreLoader = () => {
-    const [loading, setLoading] = useState(true);
+    const { loading, setLoading } = useLoadingState();
 
     useEffect(() => {
         gsap.registerPlugin(MotionPathPlugin);
 
         const showButton = gsap.to("#preloader-entering-button", {
             opacity: 1,
-            duration: 0.5,
+            pointerEvents: "auto",
+            duration: 1,
             paused: true,
         });
 
         gsap.to("#jumping-box", {
             duration: 2,
             ease: "power3.in",
-            repeat: 5,
+            repeat: 4,
             immediateRender: true,
             motionPath: {
                 path: "#path",
@@ -40,16 +41,22 @@ const PreLoader = () => {
         if (loading && !main?.classList.contains("overflow-hidden")) {
             main?.classList.add("overflow-hidden");
         } else {
-            main?.classList.remove("overflow-hidden");
+            gsap.fromTo(
+                "#_preloader",
+                { clipPath: "circle(150% at 50% 50%)" },
+                {
+                    clipPath: "circle(0% at 50% 50%)",
+                    duration: 1,
+                    onComplete: () => main?.classList.remove("overflow-hidden"),
+                }
+            );
         }
     });
 
     return (
         <motion.div
             id="_preloader"
-            className={`fixed inset-0 ${
-                loading ? "" : "-translate-y-full"
-            } duration-500 bg-[--clr-bg] z-30 overflow-hidden`}
+            className={`fixed inset-0 bg-[--clr-bg] z-30 overflow-hidden`}
             initial="hidden"
             whileInView="visible"
         >
@@ -102,13 +109,45 @@ const PreLoader = () => {
                         className="w-full h-[5px] bg-[--clr-secondary] rounded-[50%]"
                     ></div>
                 </div>
-                <button
+                <motion.button
                     id="preloader-entering-button"
-                    className={`${styles.titleText} opacity-0`}
+                    className={`${styles.flexCenter} gap-4 opacity-0 pointer-events-none`}
                     onClick={() => setLoading(false)}
+                    initial="initial"
+                    whileHover="hovered"
                 >
-                    Enter
-                </button>
+                    <span>
+                        <svg
+                            width="120"
+                            height="30"
+                            viewBox="0 0 198 37"
+                            fill="none"
+                            className="stroke-[--clr-primary] stroke-[4px]"
+                        >
+                            <motion.path
+                                d="M0.5 18H162.5L182 35L196.5 18L182 1.5L171.5 13L182 18"
+                                variants={framerAnimation.bracketPath}
+                            />
+                        </svg>
+                    </span>
+                    <span className={`${styles.titleText} tracking-wider`}>
+                        Enter
+                    </span>
+                    <span>
+                        <svg
+                            width="120"
+                            height="30"
+                            viewBox="0 0 198 37"
+                            fill="none"
+                            className="stroke-[--clr-primary] stroke-[4px]"
+                        >
+                            <motion.path
+                                d="M197.5 18H35.5L16 35L1.5 18L16 1.5L26.5 13L16 18"
+                                variants={framerAnimation.bracketPath}
+                            />
+                        </svg>
+                    </span>
+                </motion.button>
             </motion.div>
         </motion.div>
     );

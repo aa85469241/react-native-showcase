@@ -1,11 +1,12 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import gsap from "gsap";
+import { useEffect } from "react";
+import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ControlPanel, MobileInBox } from "@/components";
 import { styles } from "@/styles/style";
 import { PanelControllerProvider } from "@/context/PanelControllerContext";
+import { useLoadingState } from "@/context/loadingStateContext";
 
 type ContainerProps = {
     id?: string;
@@ -61,100 +62,107 @@ const ModalSection = ({ id, className, children }: ModalSectionProps) => {
 };
 
 const ScrollSection = () => {
-    const ref = useRef<HTMLDivElement>(null);
+    const { loading } = useLoadingState();
     const mm = gsap.matchMedia();
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
-        gsap.set(
-            ["#heading", "#modal-order-1", "#modal-order-2", "#modal-order-3"],
-            { y: 50, opacity: 0 }
-        );
-        gsap.set(["#holder-inner", "#holder-middle", "#holder-outer"], {
-            scale: 0,
-            opacity: 0,
-        });
+        if (!loading) {
+            gsap.set(
+                [
+                    "#heading",
+                    "#modal-order-1",
+                    "#modal-order-2",
+                    "#modal-order-3",
+                ],
+                { y: 50, opacity: 0 }
+            );
+            gsap.set(["#holder-inner", "#holder-middle", "#holder-outer"], {
+                scale: 0,
+                opacity: 0,
+            });
 
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: "#section-1",
-                start: "top top",
-                end: "+=4000",
-                scrub: true,
-                toggleActions: "none none none reverse",
-            },
-        })
-            .to("#heading", {
-                y: 0,
-                opacity: 1,
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#section",
+                    start: "top top",
+                    end: "+=4000",
+                    scrub: true,
+                    toggleActions: "none none none reverse",
+                },
             })
-            .to("#holder-inner", { scale: 1, opacity: 1 })
-            .to("#holder-middle", { scale: 1, opacity: 1 })
-            .to("#holder-outer", { scale: 1, opacity: 1 })
-            .to("#modal-order-1", {
-                y: 0,
-                opacity: 1,
-            })
-            .to("#modal-order-2", { y: 0, opacity: 1 })
-            .to("#modal-order-3", { y: 0, opacity: 1 })
-            .to("#holder-outer", { scale: 0, opacity: 0 })
-            .to("#holder-middle", { scale: 0, opacity: 0 })
-            .to("#holder-inner", { scale: 0, opacity: 0 });
-
-        mm.add(
-            {
-                isMobile: "(max-width: 768px)",
-                isDesktop: "(min-width: 769px)",
-            },
-            (context) => {
-                // @ts-ignore
-                let { isMobile } = context.conditions;
-
-                gsap.timeline({
-                    scrollTrigger: {
-                        trigger: "#footer",
-                        start: "bottom bottom",
-                        end: "bottom bottom",
-                        pin: true,
-                        toggleActions: "restart none none none",
-                        onLeaveBack: () => {
-                            gsap.to("#mobile", {
-                                yPercent: -20,
-                                xPercent: 0,
-                                scale: isMobile ? 0.5 : 0.7,
-                                opacity: 0.3,
-                                duration: 0.5,
-                            });
-                            gsap.to("#control-panel", {
-                                opacity: 0,
-                                duration: 0.5,
-                            });
-                        },
-                    },
+                .to("#heading", {
+                    y: 0,
+                    opacity: 1,
                 })
-                    .to("#mobile", {
-                        yPercent: isMobile ? -50 : -30,
-                        xPercent: isMobile ? 0 : 100,
-                        duration: 1,
+                .to("#holder-inner", { scale: 1, opacity: 1 })
+                .to("#holder-middle", { scale: 1, opacity: 1 })
+                .to("#holder-outer", { scale: 1, opacity: 1 })
+                .to("#modal-order-1", {
+                    y: 0,
+                    opacity: 1,
+                })
+                .to("#modal-order-2", { y: 0, opacity: 1 })
+                .to("#modal-order-3", { y: 0, opacity: 1 })
+                .to("#holder-outer", { scale: 0, opacity: 0 })
+                .to("#holder-middle", { scale: 0, opacity: 0 })
+                .to("#holder-inner", { scale: 0, opacity: 0 });
+
+            mm.add(
+                {
+                    isMobile: "(max-width: 768px)",
+                    isDesktop: "(min-width: 769px)",
+                },
+                (context) => {
+                    // @ts-ignore
+                    let { isMobile } = context.conditions;
+
+                    gsap.timeline({
+                        scrollTrigger: {
+                            trigger: "#footer",
+                            start: "bottom bottom",
+                            end: "bottom bottom",
+                            pin: true,
+                            toggleActions: "restart none none none",
+                            onLeaveBack: () => {
+                                gsap.to("#mobile", {
+                                    yPercent: -20,
+                                    xPercent: 0,
+                                    scale: isMobile ? 0.5 : 0.7,
+                                    opacity: 0.3,
+                                    duration: 0.5,
+                                });
+                                gsap.to("#control-panel", {
+                                    opacity: 0,
+                                    duration: 0.5,
+                                });
+                            },
+                        },
                     })
-                    .to("#mobile", {
-                        scale: isMobile ? 0.4 : 0.8,
-                        opacity: 1,
-                        duration: 1,
-                    })
-                    .to("#control-panel", { opacity: 1, duration: 0.5 });
-            }
-        );
+                        .to("#mobile", {
+                            yPercent: isMobile ? -50 : -30,
+                            xPercent: isMobile ? 0 : 100,
+                            duration: 1,
+                        })
+                        .to("#mobile", {
+                            scale: isMobile ? 0.4 : 0.8,
+                            opacity: 1,
+                            duration: 1,
+                        })
+                        .to("#control-panel", { opacity: 1, duration: 0.5 });
+                }
+            );
+        }
     });
 
     return (
         <PanelControllerProvider>
-            <div ref={ref}>
+            <div>
                 <MobileInBox />
                 <div>
                     <Container
-                        id="section-1"
+                        id="section"
                         wrapperClass={`p-3 md:p-6 relative ${styles.flexColumns}`}
                     >
                         <section

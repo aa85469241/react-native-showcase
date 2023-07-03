@@ -1,9 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
 import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { LandingScreen, MockupBack, MockupFront } from "@/public";
 import { usePanelController } from "@/context/PanelControllerContext";
 import { screens } from "@/utils/screenData";

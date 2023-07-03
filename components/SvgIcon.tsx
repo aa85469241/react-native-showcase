@@ -1,22 +1,13 @@
-"use client";
-
-import { motion } from "framer-motion";
-
-const pathVariants = {
-    hidden: { pathLength: 0 },
-    visible: { pathLength: 1, transition: { delay: 1, duration: 5 } },
-};
-
 const SvgIcon = () => {
     return (
         <div className="w-[35px] h-[35px]">
-            <motion.svg
+            <svg
                 width="100%"
                 height="100%"
                 viewBox="0 0 450.001 450.001"
                 fill="none"
             >
-                <motion.path
+                <path
                     d="M448.554 177.103c0 0-42.15-56.307-42.175-56.339c-0.011-0.015-0.93-1.647-3.762-2.548L226.973,68.62
 		c-1.291-0.364-2.655-0.364-3.946,0L47.383,118.216c0,0-2.398,0.692-3.839,2.637c-0.577,0.779-42.097,56.25-42.097,56.25
 		c-1.392,1.862-1.81,4.278-1.122,6.499c0.689,2.221,2.4,3.978,4.601,4.725l37.171,12.615v100.874c0,2.938,1.771,5.585,4.487,6.707
@@ -27,11 +18,13 @@ const SvgIcon = () => {
 		L217.743,363.542z M225,166.062L76.37,125.116L225,83.146l148.63,41.97L225,166.062z M393.388,296.961l-161.131,66.581V194.056
 		l39.124,48.219c1.404,1.731,3.49,2.686,5.635,2.686c0.781,0,1.568-0.123,2.333-0.384l114.039-38.708V296.961L393.388,296.961z
 		M279.469,229.203l-41.837-51.565l160.169-44.124l33.139,44.28L279.469,229.203z"
-                    variants={pathVariants}
+                    id="head-icon-path"
                     stroke={"var(--clr-primary)"}
                     strokeWidth={20}
+                    strokeDashoffset={2000}
+                    strokeDasharray={2000}
                 />
-            </motion.svg>
+            </svg>
         </div>
     );
 };

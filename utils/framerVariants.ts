@@ -33,9 +33,20 @@ const svgPath = {
     },
 }
 
+const bracketPath = {
+    initial: { pathLength: 1 },
+    hovered: {
+        pathLength: [1, 0, 1],
+        transition: {
+            duration: 0.8
+        }
+    }
+}
+
 export const framerAnimation = {
     FadeInDown,
     Appearing,
     stretchX,
     svgPath,
+    bracketPath,
 }
