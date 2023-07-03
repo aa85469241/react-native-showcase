@@ -18,7 +18,7 @@ const MobileInBox = () => {
         let trigger = ref.current;
 
         if (!loading) {
-            gsap.to(trigger, { opacity: 1, duration: 1, delay: 1 });
+            gsap.to(trigger, { opacity: 1, duration: 1, delay: 1.5 });
 
             // scroll down arrow animation //
             gsap.to("._arrow-wrap", {

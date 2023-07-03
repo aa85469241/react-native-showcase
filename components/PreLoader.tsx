@@ -115,6 +115,7 @@ const PreLoader = () => {
                     onClick={() => setLoading(false)}
                     initial="initial"
                     whileHover="hovered"
+                    whileTap={{ scale: [1, 0.8, 1] }}
                 >
                     <span>
                         <svg

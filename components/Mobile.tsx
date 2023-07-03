@@ -44,20 +44,20 @@ const Mobile = () => {
                                 className="w-full h-full"
                             />
                         </div>
-                        <div id="screen-wrapper" className="w-full">
-                            {screens
-                                .filter(
-                                    (screen) =>
-                                        screen.screenName === state.selectedPage
-                                )
-                                .map((_screen, i) => (
-                                    <Image
-                                        key={"screen-" + i}
-                                        src={_screen.src}
-                                        alt={_screen.screenName}
-                                        className="w-full h-full"
-                                    />
-                                ))}
+                        <div id="screen-wrapper" className="relative w-full">
+                            {screens.map((_screen, i) => (
+                                <Image
+                                    key={"screen-" + i}
+                                    src={_screen.src}
+                                    alt={_screen.screenName}
+                                    className={`absolute inset-0 w-full h-full ${
+                                        state.selectedPage ===
+                                        _screen.screenName
+                                            ? "opacity-100"
+                                            : "opacity-0"
+                                    } duration-500`}
+                                />
+                            ))}
                         </div>
                     </div>
                     <div
