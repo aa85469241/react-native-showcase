@@ -229,9 +229,8 @@ const ScrollSection = () => {
                                         className={`${styles.descriptionText} leading-6 text-justify`}
                                     >
                                         It is flexible app allows users to open
-                                        it on their mobile devices whenever they
-                                        want. (Android device is more
-                                        suggested.)
+                                        it on their mobile device whenever they
+                                        want. Both Android and IOS are fine.
                                     </p>
                                 </ModalSection>
                             </Holder>
