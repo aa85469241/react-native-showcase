@@ -14,7 +14,7 @@ export const ExpoStoreButton = ({
     return (
         <PanelButton id={id} serialNumber={4} className={className}>
             <Link
-                href="https://expo.dev/@defgh/react-native-typescript?serviceType=classic&distribution=expo-go"
+                href="https://expo.dev/%40defgh/react-native-typescript?serviceType=eas&distribution=expo-go&scheme=exp%2Breact-native-typescript&channel=production&sdkVersion=48.0.0"
                 className="absolute w-full h-full rounded-full"
             />
             <div
